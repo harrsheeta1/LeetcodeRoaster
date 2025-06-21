@@ -1,25 +1,37 @@
-"use client";
+'use client';
 import React from 'react'
-import { useState} from 'react';
+import {useState} from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-const page = () => {
+const Page = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [roast, setRoast] = useState<string | null>(null);
-  const getRoastFromGPT = async (userData: any) => {
+  const getRoastFromGPT = async (stats: {
+    totalSolved: number;
+    ranking: number;
+    contributionPoints: number;
+    acceptanceRate: number;
+    totalSubmission: number;
+    easySolved: number;
+    totalEasy: number;
+    mediumSolved: number;
+    totalMedium: number;
+    hardSolved: number;
+    totalHard: number;
+  }) => {
     const prompt = `
 You are a sarcastic Bollywood-style roaster 🤣🔥. Based on this user's LeetCode stats:
-- Total Solved: ${userData.totalSolved}
-- Ranking: ${userData.ranking}
-- Contribution Points: ${userData.contributionPoints}
-- Acceptance Rate: ${userData.acceptanceRate}%
-- Total Submissions: ${userData.totalSubmission}
-- Easy: ${userData.easySolved}/${userData.totalEasy}
-- Medium: ${userData.mediumSolved}/${userData.totalMedium}
-- Hard: ${userData.hardSolved}/${userData.totalHard}
+- Total Solved: ${stats.totalSolved}
+- Ranking: ${stats.ranking}
+- Contribution Points: ${stats.contributionPoints}
+- Acceptance Rate: ${stats.acceptanceRate}%
+- Total Submissions: ${stats.totalSubmission}
+- Easy: ${stats.easySolved}/${stats.totalEasy}
+- Medium: ${stats.mediumSolved}/${stats.totalMedium}
+- Hard: ${stats.hardSolved}/${stats.totalHard}
 
 Generate a happy, funny roast with:
 - 15 lines
@@ -53,7 +65,7 @@ const handleRoast = async () => {
          const roastText = await getRoastFromGPT(stats)
          setRoast(roastText)
       }
-    } catch (err) {
+    } catch  {
       setRoast("💥Server exploded! Maybe your code did it.")
     } finally {
       setLoading(false)
@@ -97,4 +109,4 @@ const handleRoast = async () => {
   )
 }
 
-export default page
+export default Page
