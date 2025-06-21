@@ -1,5 +1,5 @@
 
-import Image from "next/image";
+
 import Floatingemojis from "@/components/FloatingEmojis"
 import Leetcode from "./leetcode/page";
 export default function Home() {

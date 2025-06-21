@@ -1,9 +1,10 @@
 "use client";
 import React from 'react'
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+
 const page = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
