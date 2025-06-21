@@ -1,0 +1,18 @@
+@keyframes customBounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  .animate-custom-bounce {
+    animation: customBounce 1.4s ease-in-out infinite;
+  }
+
+
+.myCustomHeading {
+  color: #111827;
+  text-shadow: 1px 1px 2px #eab308;
+  transition: all 0.3s ease-in-out;
+}
